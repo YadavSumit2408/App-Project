@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:toast/toast.dart';
 
+
 class DashboardPage extends StatefulWidget {
+  final String price;
+
+  DashboardPage({Key key, @required this.price}) : super(key: key);
   @override
-  _DashboardPageState createState() => _DashboardPageState();
+  _DashboardPageState createState() => _DashboardPageState(price);
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  String price;
+  _DashboardPageState(this.price);
+
+
   String uid = '';
   getUid() {}
-
-
 
   Razorpay razorpay;
   TextEditingController textEditingController=new TextEditingController();
@@ -41,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void openCheckout(){
     var options={
       "key":"rzp_test_8YqQnVMY2URk4R",
-      "amount": num.parse(textEditingController.text)*100,
+      "amount": num.parse(price)*100,
       "name":"Sample App",
       "description" : "Pay for your safety",
       "prefill":{
@@ -90,29 +96,6 @@ class _DashboardPageState extends State<DashboardPage> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new Text('You are now logged in as ${uid}'),
-                SizedBox(
-                  height: 15.0,
-                ),
-                new OutlineButton(
-                  borderSide: BorderSide(
-                      color: Colors.red, style: BorderStyle.solid, width: 3.0),
-                  child: Text('Logout'),
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut().then((action) {
-                      Navigator
-                          .of(context)
-                          .pushReplacementNamed('/intro');
-                    }).catchError((e) {
-                      print(e);
-                    });
-                  },
-                ),
-                TextField(
-                  controller: textEditingController,
-                  decoration: InputDecoration(hintText: "Amount To Pay"),
-
-                ),
                 SizedBox(height:12,),
                 RaisedButton(
                   color:Colors.blue,
@@ -131,6 +114,7 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
+
 
 
 

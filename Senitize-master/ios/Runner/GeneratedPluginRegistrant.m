@@ -4,8 +4,8 @@
 
 #import "GeneratedPluginRegistrant.h"
 
-#if __has_include(<firebase_auth/FLTFirebaseAuthPlugin.h>)
-#import <firebase_auth/FLTFirebaseAuthPlugin.h>
+#if __has_include(<firebase_auth/FirebaseAuthPlugin.h>)
+#import <firebase_auth/FirebaseAuthPlugin.h>
 #else
 @import firebase_auth;
 #endif

@@ -38,6 +38,7 @@ dev_dependencies:
   razorpay_flutter: ^1.2.2
   toast: ^0.1.5
   geolocator: ^5.3.2+2
+  firebase_auth:
   flutter_datetime_picker:
     git:
       url: https://github.com/derohimat/flutter_datetime_picker.git

@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:toast/toast.dart';
 
-import 'homepage.dart';
 
 class Senitfact extends StatefulWidget {
+  final String factory;
+
+  Senitfact({Key key, @required this.factory}) : super(key: key);
   @override
-  _SenitfactState createState() => _SenitfactState();
+  _SenitfactState createState() => _SenitfactState(factory);
 }
 
 class _SenitfactState extends State<Senitfact> {
+  String factory;
+  _SenitfactState(this.factory);
+  Razorpay razorpay;
+
+
+
   String _date = "Not set";
   String _time = "Not set";
   Geolocator geolocator = Geolocator();
@@ -18,7 +28,64 @@ class _SenitfactState extends State<Senitfact> {
   @override
   void initState() {
     super.initState();
+    razorpay=new Razorpay();
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlerPaymentSuccess);
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlerErrorFailure);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handlerExternalWallet);
   }
+
+
+  void dispose(){
+    super.dispose();
+    razorpay.clear();
+  }
+  void openCheckout(){
+    var options={
+      "key":"rzp_test_8YqQnVMY2URk4R",
+      "amount": num.parse(factory)*100,
+      "name":"Sample App",
+      "description" : "Pay for your safety",
+      "prefill":{
+        "contact":"8565939142",
+        "email":"thewebers2408@gmail.com"
+      },
+      "externals":{
+        "wallets":["paytm"]
+
+      }
+
+    };
+    try{
+      razorpay.open(options);
+    }catch(e)
+    {
+      print(e.toString());
+    }
+  }
+
+
+  void handlerPaymentSuccess(){
+    print("Payment Success");
+    Toast.show("Payment Success", context);
+  }
+  void handlerErrorFailure() {
+    print("Payment Error");
+    Toast.show("Payment Errror", context);
+  }
+  void handlerExternalWallet(){
+    print("External Wallet");
+    Toast.show("External Wallet", context);
+  }
+
+
+
+  final snackBar1 = SnackBar(content: Text('Date is not set!'));
+  final snackBar2 = SnackBar(content: Text('Time is not set!'));
+  final snackBar3 = SnackBar(content: Text('Please give full address'));
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +93,8 @@ class _SenitfactState extends State<Senitfact> {
       appBar: AppBar(
         title: Text('Place order'),
       ),
-      body: Center(
+      body: Builder(
+      builder: (context) =>  Center(
         child: SingleChildScrollView(
             child: Column(mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -196,7 +264,9 @@ class _SenitfactState extends State<Senitfact> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       color: Colors.blue,
-                      onPressed: ()=> getUserLocation,
+                      onPressed: ()=> {print(factory),
+                        getUserLocation(),
+                      },
                       icon: Icon(Icons.my_location, color: Colors.white,),
                     ),
                   ),
@@ -205,7 +275,7 @@ class _SenitfactState extends State<Senitfact> {
                     height: 100.0,
                     alignment: Alignment.center,
                     child: RaisedButton.icon(
-                      label: Text("Pay now",
+                      label: Text('Pay now ' + factory,
                         style: TextStyle(
                             color: Colors.white
                         ),
@@ -214,13 +284,28 @@ class _SenitfactState extends State<Senitfact> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       color: Colors.blue,
-                      onPressed: ()=>{ Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage()))
+                      onPressed: ()=>{
+                        if(_date == "Not set") {
+                          Scaffold.of(context).showSnackBar(snackBar1)
+                        }else if(_time == "Not set" ){
+                          Scaffold.of(context).showSnackBar(snackBar2)
+                        }else if( locationController.text.isEmpty ) {
+                          Scaffold.of(context).showSnackBar(snackBar3)
+                        }
+                        else{
+                            openCheckout()
+                          }
+
+
+//                        openCheckout(),
+//                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DashboardPage(price: factory)))
                       },
                       icon: Icon(Icons.payment, color: Colors.white,),
                     ),
                   ),
                 ])),
       ),
+    ),
     );
   }
   getUserLocation() async {
@@ -232,7 +317,7 @@ class _SenitfactState extends State<Senitfact> {
     String completeAddress = '${placemark.subThoroughfare} ,${placemark
         .thoroughfare}, ${placemark.subLocality} ${placemark.locality} ${placemark.subAdministrativeArea}${placemark
         .administrativeArea} ${placemark.postalCode},${placemark.country}';print(completeAddress);
-    String formattedAddress = "${placemark.locality}, ${placemark.country}";
+    String formattedAddress = "${placemark.thoroughfare}, ${placemark.locality},${placemark.postalCode}, ${placemark.country}";
     locationController.text = formattedAddress;
   }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "557078511634",
+    "firebase_url": "https://senitise-d6dcb.firebaseio.com",
+    "project_id": "senitise-d6dcb",
+    "storage_bucket": "senitise-d6dcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557078511634:android:01c1a8e359b5af844198cb",
+        "android_client_info": {
+          "package_name": "flutter.uiux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557078511634-6kbloe44baoucgk450iahnmdo32k0ko0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ0a3oEZmCEc4V6CA-BpEsBxoF_DFh9kA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557078511634-6kbloe44baoucgk450iahnmdo32k0ko0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

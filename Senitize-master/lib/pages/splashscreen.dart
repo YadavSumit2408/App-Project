@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:uiux/utility/_navigator.dart';
 import 'package:uiux/utility/text_cards.dart';
 
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -14,7 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 5), () => MyNavigator.goToIntro(context));
+    Timer(Duration(seconds: 3), () => MyNavigator.goToIntro(context));
+//    AuthService().handleAuth()
   }
 //MyNavigator.goToIntro(context))
   @override
