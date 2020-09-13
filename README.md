@@ -12,6 +12,8 @@ Step 4:-<br>
 Then Just Pay through Razorpay(my previous Repo is all about this payment gateway only).<br>
 
 How To Proceed In the App :-
-
+<p align="center">
+<img src="Senitize-master/assets/ez.gif" height=600; center>
+ </p>
 
 
