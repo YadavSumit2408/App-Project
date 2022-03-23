@@ -109,10 +109,10 @@ class Profile extends StatelessWidget {
                       child: const Text('Back To Home')),
                 ],
               ),
-              const SizedBox(height:225),
+              const SizedBox(height:223),
               Positioned(
                 child: BottomBar(),
-                bottom: 5,
+
                 left: 5,
                 right: 5,
               ),

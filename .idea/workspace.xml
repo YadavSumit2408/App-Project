@@ -23,12 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f372f2de-561c-489b-b151-cf920aed2d27" name="Default Changelist" comment="Add">
-      <change beforePath="$PROJECT_DIR$/.idea/App-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/App-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employee_app/lib/views/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/employee_app/lib/views/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/employee_app/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/employee_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648015125968</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add">
+      <created>1648026961249</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648026961249</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

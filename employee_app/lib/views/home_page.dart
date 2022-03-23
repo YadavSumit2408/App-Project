@@ -125,8 +125,7 @@ class _HomePageState extends State<HomePage> {
             child:  Text('Employee Directory',style:TextStyle(color: Colors.black54)),),
         backgroundColor: Colors.tealAccent,
       ),
-       body:Container(
-         child: Column(
+       body:Column(
            children:[
            Container(
             color: Theme.of(context).primaryColor,
@@ -206,7 +205,6 @@ class _HomePageState extends State<HomePage> {
             left: 5,
             right: 5,
           ),
-          ],),)
-    );
+          ],),);
   }
 }
