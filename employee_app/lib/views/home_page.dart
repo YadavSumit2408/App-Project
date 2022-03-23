@@ -13,6 +13,7 @@ class _HomePageState extends State<HomePage> {
   List<Employee>employees =[];
   TextEditingController editingController = TextEditingController();
 
+
   // Fetching the Api Data
   Future<List<Employee>>getEmployees() async{
     final response = await http.get(Uri.parse('https://620dfdda20ac3a4eedcf5a52.mockapi.io/api/employee'));
@@ -124,9 +125,27 @@ class _HomePageState extends State<HomePage> {
             child:  Text('Employee Directory',style:TextStyle(color: Colors.black54)),),
         backgroundColor: Colors.tealAccent,
       ),
-       body:Container(child:
-      Column(
-        children:[
+       body:Container(
+         child: Column(
+           children:[
+           Container(
+            color: Theme.of(context).primaryColor,
+            child: Card(
+                color: Colors.white,
+                child: ListTile(
+                  leading: const Icon(Icons.search),
+                  title: TextField(
+                    controller: editingController,
+                    decoration: const InputDecoration(
+                        hintText: 'Search', border: InputBorder.none),
+                  ),
+                  trailing: IconButton(icon: const Icon(Icons.cancel), onPressed: () {
+                    editingController.clear();
+                  },),
+                ),
+
+            ),
+          ),
           // creating a ListView
           Expanded(
          child: FutureBuilder(
