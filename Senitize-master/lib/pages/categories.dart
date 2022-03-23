@@ -12,7 +12,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  String p_home = '300';
+  String p_home = '3001';
   String p_office = '500';
   String p_villa = '700';
   String p_factory = '900';
